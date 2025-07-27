@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "Arman",
+      "email": "solaa8239@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "username": "Ali",
+      "email": "Ali@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "087c",
+      "username": "reza",
+      "email": "reza@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "username": "Arman",
+      "body": "hi"
+    },
+    {
+      "id": "2",
+      "username": "Arman",
+      "body": "test 1"
+    },
+    {
+      "id": "3",
+      "username": "Ali",
+      "body": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi doloremque aliquam tempore, ipsum rerum sint laboriosam, debitis aut corrupti illo laudantium saepe voluptates necessitatibus adipisci perferendis assumenda eum explicabo asperiores. Fuga blanditiis laboriosam officia omnis veniam, voluptatem odio inventore porro. Consequatur molestiae corrupti quibusdam, recusandae qui voluptatum iste asperiores harum sequi rem repellendus. At repellat dolor repudiandae, cupiditate porro consectetur"
+    },
+    {
+      "id": "4",
+      "username": "reza",
+      "body": "test from reza account\n"
+    }
+  ]
+}
