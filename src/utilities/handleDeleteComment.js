@@ -1,4 +1,5 @@
 export const HandleDeleteComments = ({ deleteComment, id }) => {
-  deleteComment(id);
-  window.location.reload();
+  deleteComment(id).then(() => {
+    window.location.reload();
+  });
 };

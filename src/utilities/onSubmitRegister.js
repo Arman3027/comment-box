@@ -44,7 +44,7 @@ export const onSubmitRegister = ({
   if (uniqueEmail && uniqueUsername) {
     toast.success("you registered. please login.", {
       position: "top-right",
-      autoClose: 1500,
+      autoClose: 5500,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: true,
@@ -54,9 +54,10 @@ export const onSubmitRegister = ({
       transition: Bounce,
     });
     setTimeout(() => {
-      AddUser(userdata);
+      AddUser(userdata).then(() => {
+        window.location.reload();
+      });
       navigate("/login");
-      window.location.reload();
-    }, 2000);
+    }, 6000);
   }
 };

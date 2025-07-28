@@ -5,6 +5,7 @@ export const HandleSendComment = ({ text, AddComment, data }) => {
     username: username,
     body: text,
   };
-  AddComment(newComment);
-  window.location.reload();
+  AddComment(newComment).then(() => {
+    window.location.reload();
+  });
 };

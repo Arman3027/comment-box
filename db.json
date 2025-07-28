@@ -17,6 +17,12 @@
       "username": "reza",
       "email": "reza@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "333a",
+      "username": "Arian",
+      "email": "Arian@gmail.com",
+      "password": "123456"
     }
   ],
   "comments": [
@@ -39,6 +45,11 @@
       "id": "4",
       "username": "reza",
       "body": "hi "
+    },
+    {
+      "id": "5",
+      "username": "Arian",
+      "body": "this is test \n"
     }
   ]
 }
