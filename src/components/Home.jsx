@@ -33,9 +33,11 @@ export const Home = () => {
               Logout
             </button>
           ) : (
-            <button className="rounded-md bg-neutral-800 py-1.5 px-4.5 text-lg font-semibold text-white cursor-pointer">
-              <Link to={"/login"}>Login</Link>
-            </button>
+            <Link to={"/login"}>
+              <button className="rounded-md bg-neutral-800 py-1.5 px-4.5 text-lg font-semibold text-white cursor-pointer">
+                Login
+              </button>
+            </Link>
           )}
         </div>
         {data.map((comment, index) => {
