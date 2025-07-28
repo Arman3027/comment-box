@@ -56,6 +56,7 @@ export const onSubmitRegister = ({
     setTimeout(() => {
       AddUser(userdata);
       navigate("/login");
+      window.location.reload();
     }, 2000);
   }
 };

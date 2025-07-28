@@ -17,6 +17,12 @@
       "username": "reza",
       "email": "reza@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "bf16",
+      "username": "hadi",
+      "email": "hadi@gmail.com",
+      "password": "123456"
     }
   ],
   "comments": [
@@ -38,7 +44,7 @@
     {
       "id": "4",
       "username": "reza",
-      "body": "test from reza account\n"
+      "body": "hi "
     }
   ]
 }
