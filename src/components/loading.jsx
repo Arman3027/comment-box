@@ -1,7 +1,8 @@
-export const Loading = () => {
+export const Loading = ({ size }) => {
   return (
     <svg
       className="size-20"
+      style={{ width: size, height: size }}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 200 200"
     >

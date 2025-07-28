@@ -1,14 +1,37 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { HandleSendComment } from "../utilities/handleSendComment";
 import { useAddNewCommentMutation } from "../services/Server";
+import { Loading } from "./loading";
 
-export const CommentBox = ({ data }) => {
+export const CommentBox = ({ data, refetch }) => {
+  const textareaRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isloggedin, setloggedin] = useState(
     localStorage.getItem("isLoggedin")
   );
   const [text, setText] = useState("");
   const [AddComment] = useAddNewCommentMutation();
+  const HandleSendComment = () => {
+    if (textareaRef.current.value == "") {
+      return;
+    }
+    setIsLoading(true);
+    textareaRef.current.value = "";
+    let username = localStorage.getItem("username");
+    let newComment = {
+      id: String(data.length + 1),
+      username: username,
+      body: text,
+    };
+    AddComment(newComment)
+      .then(() => {
+        refetch();
+      })
+      .then(() => {
+        setIsLoading(false);
+      });
+  };
+
   return (
     <div className="flex flex-col justify-center items-center gap-1">
       <div>
@@ -17,6 +40,7 @@ export const CommentBox = ({ data }) => {
           placeholder="write your comment ..."
           name="comment"
           id="comment"
+          ref={textareaRef}
           onChange={(e) => {
             setText(e.currentTarget.value);
           }}
@@ -26,14 +50,14 @@ export const CommentBox = ({ data }) => {
         {isloggedin ? (
           <button
             onClick={() => {
-              HandleSendComment({ text, AddComment, data });
+              HandleSendComment();
             }}
-            className="rounded-md bg-neutral-800 py-1.5 shadow-sm/50 px-5 font-semibold text-white cursor-pointer"
+            className="w-20 h-9 rounded-md bg-neutral-800 p-1 shadow-sm/50 font-semibold text-white cursor-pointer"
           >
-            send
+            {isLoading ? <Loading size={"100%"} /> : "send"}
           </button>
         ) : (
-          <button className="rounded-md bg-neutral-800 py-1.5 shadow-sm/50 px-5 font-semibold text-white cursor-pointer">
+          <button className="w-20 h-9 rounded-md bg-neutral-800 p-1 shadow-sm/50 font-semibold text-white cursor-pointer">
             <Link to={"/login"}>login</Link>
           </button>
         )}
