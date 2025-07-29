@@ -27,7 +27,7 @@ export const Register = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const onSubmitRegister = ({ data: userdata, apidata: data }) => {
+  async function onSubmitRegister({ data: userdata, apidata: data }) {
     let uniqueUsername = true;
     let uniqueEmail = true;
     data.map((user) => {
@@ -65,9 +65,9 @@ export const Register = () => {
       });
     }
     if (uniqueEmail && uniqueUsername) {
-      toast.info("Please wait a moment", {
+      toast.info("please login.", {
         position: "top-right",
-        autoClose: 5500,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: true,
@@ -76,14 +76,16 @@ export const Register = () => {
         theme: "dark",
         transition: Bounce,
       });
-      setTimeout(() => {
-        AddUser(userdata).then(() => {
-          window.location.reload();
-        });
+      try {
+        await AddUser(userdata);
         navigate("/login");
-      }, 6000);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        window.location.reload();
+      }
     }
-  };
+  }
 
   return (
     <div className="bg-neutral-200 w-dvw h-dvh flex justify-center items-center">

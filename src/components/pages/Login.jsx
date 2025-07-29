@@ -61,7 +61,7 @@ export const Login = () => {
     } else {
       toast.success("Login successful.", {
         position: "top-right",
-        autoClose: 1500,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: true,
@@ -76,7 +76,7 @@ export const Login = () => {
         localStorage.setItem("id", UserID);
         navigate("/");
         window.location.reload();
-      }, 2000);
+      }, 1500);
     }
   };
 

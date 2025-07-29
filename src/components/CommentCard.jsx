@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDeleteCommentMutation } from "../services/Server";
-import { TrashSvg } from "./TrashSvg";
-import { Loading } from "./loading";
+import { TrashSvg } from "./Icons/TrashSvg";
+import { Loading } from "./Icons/loading";
 
 export const CommentCard = ({ username, body, id, refetch }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -10,21 +10,22 @@ export const CommentCard = ({ username, body, id, refetch }) => {
   );
   const [deleteComment] = useDeleteCommentMutation();
 
-  const HandleDeleteComments = () => {
+  async function HandleDeleteComments() {
     setIsLoading(true);
-    deleteComment(id)
-      .then(() => {
-        refetch();
-      })
-      .then(() => {
-        setIsLoading(false);
-      });
-  };
+    try {
+      await deleteComment(id);
+      await refetch();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
-    <div className="w-72 sm:w-[500px] min-h-20 sm:min-h-24 flex flex-col gap-2 p-3 overflow-x-hidden bg-white rounded-sm shadow-xl">
+    <div className="w-72 sm:w-[500px] min-h-20 sm:min-h-24 flex flex-col gap-2 p-3 overflow-x-hidden border-1 border-neutral-900 bg-neutral-800 rounded-sm shadow-md/30">
       <div className="flex justify-start items-center w-full">
-        <h1 className="text-neutral-900 font-bold pl-1 w-full">{username}</h1>
+        <h1 className="text-textColor font-bold pl-1 w-full">{username}</h1>
         {LogUsername == username ? (
           <span onClick={HandleDeleteComments}>
             {isLoading ? <Loading size={"17px"} /> : <TrashSvg />}
@@ -33,7 +34,7 @@ export const CommentCard = ({ username, body, id, refetch }) => {
           ""
         )}
       </div>
-      <p className="leading-[180%] text-sm sm:text-[16px] text-neutral-800 pl-3">
+      <p className="leading-[180%] text-sm sm:text-[16px] text-textColor pl-3">
         {body}
       </p>
     </div>
