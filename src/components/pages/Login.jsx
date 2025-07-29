@@ -81,7 +81,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="bg-neutral-200 w-dvw h-dvh flex justify-center items-center">
+    <div className="bg-bgMain w-dvw h-dvh flex justify-center items-center">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -95,8 +95,8 @@ export const Login = () => {
         theme="light"
         transition={Bounce}
       />
-      <div className="w-64 sm:w-80 h-fit bg-white rounded-xl flex flex-col justify-between items-center shadow-2xl/40">
-        <h1 className="text-neutral-900 p-5 text-[24px] sm:text-[26px] font-semibold cursor-default">
+      <div className="w-64 sm:w-80 h-fit bg-neutral-800 rounded-xl flex flex-col justify-between items-center shadow-md/40">
+        <h1 className="text-textColor p-5 text-[24px] sm:text-[26px] font-semibold cursor-default">
           LOGIN
         </h1>
         <form
@@ -107,37 +107,47 @@ export const Login = () => {
         >
           <div className="flex flex-col justify-center items-center w-full gap-1">
             <input
-              className="w-full h-8 bg-white outline-0 border-0 px-4 text-sm text-neutral-800 rounded-2xl shadow-sm/60"
+              className="w-full h-8 bg-neutral-900 outline-0 border-0 px-4 text-sm text-textColor rounded-2xl "
               {...register("email")}
               placeholder="email"
-              style={{ border: errors.email ? "1px red solid" : "" }}
+              style={{
+                border: errors.email ? "2px red solid" : "",
+                boxShadow: errors.email
+                  ? "0px 0px 3px red"
+                  : "0px 0px 7px black",
+              }}
             />
-            <p className="text-xs sm:text-sm text-red-700 text-nowrap">
+            <p className="text-xs sm:text-sm text-red-500 font-medium text-nowrap">
               {errors.email?.message}
             </p>
           </div>
           <div className="flex flex-col justify-center items-center w-full gap-1">
             <input
-              className="w-full h-8 bg-white outline-0 border-0 px-4 text-sm text-neutral-800 rounded-2xl shadow-sm/60"
+              className="w-full h-8 bg-neutral-900 outline-0 border-0 px-4 text-sm text-textColor rounded-2xl"
               {...register("password")}
               placeholder="password"
               type="password"
-              style={{ border: errors.password ? "1px red solid" : "" }}
+              style={{
+                border: errors.password ? "2px red solid" : "",
+                boxShadow: errors.password
+                  ? "0px 0px 3px red"
+                  : "0px 0px 7px black",
+              }}
             />
-            <p className="text-xs sm:text-sm text-red-700 text-nowrap">
+            <p className="text-xs sm:text-sm text-red-500 font-medium text-nowrap">
               {errors.password?.message}
             </p>
           </div>
           <button
-            className=" bg-neutral-800 py-1.5 w-full rounded-md font-semibold text-white cursor-pointer"
+            className=" bg-bgMain py-1.5 w-full rounded-md font-semibold text-white cursor-pointer"
             type="submit"
           >
             Login
           </button>
-          <p className="text-sm text-neutral-700 leading-[180%] cursor-default">
+          <p className="text-sm text-textColor/80 leading-[180%] cursor-default">
             don't have an account ?{" "}
             <Link
-              className="underline text-neutral-800  cursor-pointer"
+              className="underline text-textColor/90  cursor-pointer"
               to={"/register"}
             >
               register

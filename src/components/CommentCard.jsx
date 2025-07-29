@@ -28,7 +28,7 @@ export const CommentCard = ({ username, body, id, refetch }) => {
         <h1 className="text-textColor font-bold pl-1 w-full">{username}</h1>
         {LogUsername == username ? (
           <span onClick={HandleDeleteComments}>
-            {isLoading ? <Loading size={"17px"} /> : <TrashSvg />}
+            {isLoading ? <Loading size={"20px"} /> : <TrashSvg />}
           </span>
         ) : (
           ""

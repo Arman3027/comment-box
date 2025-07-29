@@ -30,7 +30,10 @@ export const Home = () => {
   if (data) {
     return (
       <div className="w-full min-h-dvh h-full bg-bgMain flex flex-col items-center gap-5 p-5">
-        <div className="w-full flex justify-end items-center">
+        <div className="w-full flex justify-between items-center">
+          <div className="text-textColor text-shadow-xs/50 text-shadow-textColor font-extrabold text-2xl sm:text-3xl">
+            Comment-Box
+          </div>
           {isLoggedin ? (
             <button
               onClick={handleLogout}
